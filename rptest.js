@@ -1,7 +1,7 @@
 var rp = require('request-promise-native');
 
 var options = {
-    uri: 'http://dev-constellation.citwdd.net',
+    uri: 'https://easyrent-api-dev.cit362.com',
     headers:{
     },
 };

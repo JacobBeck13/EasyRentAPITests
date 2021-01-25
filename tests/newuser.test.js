@@ -1,20 +1,37 @@
 const rp = require('request-promise-native');
 const config = require('config');
 
-const newUserUrl = config.get('constellation-url') + '/account/register';
-console.log(newUserUrl);
+const newReservation = config.get('EasyRentAPI-url') + '/reservations';
+console.log(newReservation);
 
-it(`Testing to see if ${newUserUrl} is up`, async () => {
+it(`Testing to see if ${newReservation} is up`, async () => {
     const date = new Date();
     let options = {
         method: 'POST',
-        uri: newUserUrl,
+        uri: newReservation,
         headers: {
         },
         formData: {
-            'Email': `testUser${date.getTime()}@email.com`,
-            'Password': 'Passw0rd_',
-            'ConfirmPassword': 'Passw0rd_'
+            "customerId": "4394924942",
+            "reservationItems": [
+                {
+                    "description": "Ultralight",
+                    "itemId": 4900001
+                },
+                {
+                    "description": "Fuel",
+                    "itemId": 4900002
+                },
+                {
+                    "description": "Flight suit",
+                    "itemId": 4900003
+                },
+                {
+                    "description": "Helmet with visor",
+                    "itemId": 4900004
+                }
+            ],
+            "dueDate": 1610148694321
         },
         simple: false,
     };
