@@ -11,7 +11,7 @@ it(`Testing to see if ${newReservation} is up`, async () => {
         uri: newReservation,
         headers: {
         },
-        formData: {
+        body: {
             "customerId": "4394924942",
             "reservationItems": [
                 {
@@ -33,6 +33,7 @@ it(`Testing to see if ${newReservation} is up`, async () => {
             ],
             "dueDate": 1610148694321
         },
+        json: true, // Automatically stringifies the body to JSON
         simple: false,
     };
 
