@@ -1,7 +1,7 @@
 const rp = require('request-promise-native');
 const config = require('config');
 
-const newUserUrl = config.get('constellation-url') + '/account/register';
+const newUserUrl = config.get('EasyRentAPI-url') + 'reservations';
 console.log(newUserUrl);
 
 it(`Testing to see if ${newUserUrl} is up`, async () => {
@@ -11,10 +11,20 @@ it(`Testing to see if ${newUserUrl} is up`, async () => {
         uri: newUserUrl,
         headers: {
         },
-        formData: {
-            'Email': `testUser${date.getTime()}@email.com`,
-            'Password': 'Passw0rd_',
-            'ConfirmPassword': 'Passw0rd_'
+        body:     {
+            "reservationId": "489ac64f-76bf-4c29-b713-63185bec95b0",
+            "customerId": "4394924942",
+            "reservationItems": [
+                {
+                    "description": "Kayak",
+                    "itemId": 4949490
+                },
+                {
+                    "description": "Paddle",
+                    "itemId": 4949491
+                }
+            ],
+            "dueDate": 1612293642000
         },
         simple: false,
     };
