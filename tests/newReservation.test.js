@@ -49,6 +49,4 @@ it(`Testing to see if ${newReservation} is up`, async () => {
     }
 
     expect(errorWasCaught).toBe(false);
-});
-
-
+})
