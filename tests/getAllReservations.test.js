@@ -1,12 +1,12 @@
 const rp = require('request-promise-native');
 const config = require('config');
 
-const homeUrl = config.get('constellation-url');
-
-it(`Testing to see if ${homeUrl} is up`, async () =>{
+const projectsUrl = config.get('EasyRentAPI-url')+'/reservations';
+it('Testing to see if ${projectsUrl} is up', async () =>{
     
     var options = {
-        uri: homeUrl,
+        uri: projectsUrl,
+        // Project
         headers:{
         },
     };
@@ -22,4 +22,3 @@ it(`Testing to see if ${homeUrl} is up`, async () =>{
     }
     expect(errorWasCaught).toBe(false);//assertion of what is expected
 })
-
