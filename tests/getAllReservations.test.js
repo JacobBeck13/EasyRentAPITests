@@ -22,4 +22,3 @@ it('Testing to see if ${projectsUrl} is up', async () =>{
     }
     expect(errorWasCaught).toBe(false);//assertion of what is expected
 })
-
