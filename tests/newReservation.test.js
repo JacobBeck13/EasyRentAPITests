@@ -33,6 +33,7 @@ it(`Testing to see if ${newReservation} is up`, async () => {
             "dueDate": 1610148694321
         },
         json: true, // Automatically stringifies the body to JSON
+
         simple: false,
     };
 
@@ -49,5 +50,3 @@ it(`Testing to see if ${newReservation} is up`, async () => {
 
     expect(errorWasCaught).toBe(false);
 });
-
-

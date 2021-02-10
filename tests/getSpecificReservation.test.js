@@ -53,6 +53,7 @@ it(`Testing to see if ${easyRentUrl} is up`, async () =>{
     const reservationID = makeAReservation();
     var options = {
         uri: easyRentUrl+"/"+reservationID,
+
         headers:{
         },
     };
@@ -67,5 +68,5 @@ it(`Testing to see if ${easyRentUrl} is up`, async () =>{
         errorWasCaught=true;
     }
     expect(errorWasCaught).toBe(false);//assertion of what is expected
-})
 
+})
