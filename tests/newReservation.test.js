@@ -1,31 +1,39 @@
 const rp = require('request-promise-native');
 const config = require('config');
 
-const newUserUrl = config.get('EasyRentAPI-url') + 'reservations';
-console.log(newUserUrl);
+const newReservation = config.get('EasyRentAPI-url') + '/reservations';
 
-it(`Testing to see if ${newUserUrl} is up`, async () => {
+it(`Testing to see if ${newReservation} is up`, async () => {
     const date = new Date();
     let options = {
         method: 'POST',
-        uri: newUserUrl,
+        uri: newReservation,
         headers: {
         },
-        body:     {
-            "reservationId": "489ac64f-76bf-4c29-b713-63185bec95b0",
+        body: {
             "customerId": "4394924942",
             "reservationItems": [
                 {
-                    "description": "Kayak",
-                    "itemId": 4949490
+                    "description": "Ultralight",
+                    "itemId": 4900001
                 },
                 {
-                    "description": "Paddle",
-                    "itemId": 4949491
+                    "description": "Fuel",
+                    "itemId": 4900002
+                },
+                {
+                    "description": "Flight suit",
+                    "itemId": 4900003
+                },
+                {
+                    "description": "Helmet with visor",
+                    "itemId": 4900004
                 }
             ],
-            "dueDate": 1612293642000
+            "dueDate": 1610148694321
         },
+        json: true, // Automatically stringifies the body to JSON
+
         simple: false,
     };
 
@@ -42,5 +50,3 @@ it(`Testing to see if ${newUserUrl} is up`, async () => {
 
     expect(errorWasCaught).toBe(false);
 });
-
-
