@@ -37,20 +37,12 @@ async function makeAReservation() {
         simple: false,
     };
     let response = await rp(options);
-    console.log("New reservation ID: "+response);
-    return response;
-}
-
-async function getASingleReservationReservation(reservationId) {
-    const options = {
-
-        url: easyRentUrl+'/'+reservationId
-
-    }
+    console.log("New reservation ID: " + response);
+    return response.split(" ")[1];
 }
 
 it(`Testing to see if ${easyRentUrl} is up`, async () =>{
-    const reservationID = makeAReservation();
+    const reservationID = await makeAReservation();
     var options = {
         uri: easyRentUrl+"/"+reservationID,
         headers:{
@@ -65,6 +57,7 @@ it(`Testing to see if ${easyRentUrl} is up`, async () =>{
     } catch (exception){
         errorCaught=exception;
         errorWasCaught=true;
+        console.log(exception);
     }
     expect(errorWasCaught).toBe(false);//assertion of what is expected
 })
