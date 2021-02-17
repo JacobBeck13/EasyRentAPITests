@@ -13,7 +13,7 @@ steps:
   - 'test-prod'
 
 # This step runs the integration tests in the Production environment
-- name: 'gcr.io/cloud-builders/gcloud'
+- name: gcr.io/cloud-builders/gcloud
   id: Trigger Production Environment Integration Tests
   args:
   - 'beta'
