@@ -1,2 +1,4 @@
 node_modules
 .vs
+tests/EasyRentLocust.py
+tests/__pycache__/EasyRentLocust.cpython-39.pyc
