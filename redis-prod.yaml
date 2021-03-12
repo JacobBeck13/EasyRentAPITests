@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: team-4
+spec:
+  ports:
+    - port: 6379
+      name: team-4
+  clusterIP: None
+  selector:
+    app: team-4
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: team-4
+spec:
+  selector:
+    matchLabels:
+      app: team-4  # has to match .spec.template.metadata.labels
+  serviceName: team-4
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: team-4  # has to match .spec.selector.matchLabels
+    spec:
+      containers:
+        - name: team-4
+          image: redis:3.2-alpine
+          imagePullPolicy: Always
+          args: ["--requirepass", "$(team-4_PASS)"]
+          ports:
+            - containerPort: 6379
+              name: team-4
+          env:
+          - name: team-4_PASS
+            valueFrom:
+              secretKeyRef:
+                name: env-secrets
+                key: REDIS_PASS
